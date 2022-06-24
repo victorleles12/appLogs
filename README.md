@@ -1,2 +1,2 @@
 # cadastra_Logs
-Sistema de logs para uso no marketing cloud com o ssjs
+Sistema de logs armazenamento de logs de aplicações
