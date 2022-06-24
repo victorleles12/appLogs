@@ -1,0 +1,193 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "api sistema de logs",
+        "description": "Api com objetivo de manipular os dados de logs em codigos ssjs" 
+    },
+    "version": "1.0.0",
+    "paths": {
+        "/insertLog": {
+            "post": {
+                "sumary": "Inserir novo log",
+                "description": "rota usada para adicionar um novo registro de log",
+                "tags": ["Insert Log"],
+                "requestBody": {
+                    "content" : {
+                        "application/json" :{
+                            "schema": {
+                                    "$ref": "#/components/schemas/logsInfos"
+                            }
+                        }
+                    }  
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    }
+                }  
+            }
+        },
+        "/getlogs": {
+            "get":{
+                "sumary": "Consultar registros",
+                "description": "rota usada para consultar todos os registros do banco",
+                "tags": ["Get Logs"],
+                "responses":{
+                    "200": {
+                        "description": "Ok",
+                        "content":{
+                            "application/json": {
+                                "schema": {
+                                    "$ref":"#/components/schemas/getlogs"
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getproject/{project}": {
+            "get":{
+                "sumary": "Get Projeto",
+                "description": "rota usada Pegar os dados de um projeto especifico",
+                "tags": ["Get Project"],
+                "parameters": [
+                    {
+                    "name": "project",
+                    "in": "path",
+                    "description": "logs pelo nome do projeto",
+                    "required": "true"
+                    }
+                ],
+                "responses":{
+                    "200": {
+                        "description": "Ok",
+                        "content":{
+                            "application/json": {
+                                "schema": {
+                                    "$ref":"#/components/schemas/getproject"
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deletelogs": {
+            "delete":{
+                "sumary": "Deletar Registros",
+                "description": "rota usada para Limpar o banco de dados, apagando todos os registros",
+                "parameters": {
+                    "name": "teste"
+                },
+                "tags": ["Delete Logs"],
+                "responses":{
+                    "200": {
+                        "description": "dados apagados com sucesso"
+                    }
+                }
+            }
+        },
+        "/deleteproject": {
+            "delete":{
+                "sumary": "Deletar projeto",
+                "description": "rota usada para deletar os logs de um projeto especifico",
+                "tags": ["Delete project"],
+                "requestBody": {
+                    "content" : {
+                        "application/json" :{
+                            "schema": {
+                                "$ref": "#/components/schemas/deleteproject"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200": {
+                        "description": "dados apagados com sucesso"
+                    }
+                }
+            }
+        }
+},
+    "components": {
+        "schemas":{
+            "logsInfos":{
+                "type": "object",
+                "properties":{
+                    "flag": {
+                        "type": "string"
+                    },
+                    "titulo": {
+                        "type": "string"
+                    },
+                    "descricao": {
+                        "type": "string"
+                    },
+                    "erro": {
+                        "type": "string"
+                    },
+                    "projeto": {
+                        "type": "string"
+                    }
+                }
+            },
+            "getlogs": {
+                "type": "object",
+                "properties":{
+                    "flag": {
+                        "type": "string"
+                    },
+                    "titulo": {
+                        "type": "string"
+                    },
+                    "descricao": {
+                        "type": "string"
+                    },
+                    "erro": {
+                        "type": "string"
+                    },
+                    "projeto": {
+                        "type": "string"
+                    }
+                }
+            },
+            "deleteproject": {
+                "type": "object",
+                "properties":{
+                    "projeto": {
+                        "type": "string"
+                    }
+                }
+            },
+            "getproject": {
+                "type": "object",
+                "properties":{
+                    "flag": {
+                        "type": "string"
+                    },
+                    "titulo": {
+                        "type": "string"
+                    },
+                    "descricao": {
+                        "type": "string"
+                    },
+                    "erro": {
+                        "type": "string"
+                    },
+                    "projeto": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
